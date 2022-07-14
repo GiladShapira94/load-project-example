@@ -1,0 +1,34 @@
+kind: project
+metadata:
+  name: new-project-gilad
+spec:
+  description: my new project
+  functions:
+  - name: fetch_data
+    kind: job
+    image: mlrun/mlrun
+    handler: taxi.fetch_data
+    requirements:
+    - lightgbm
+    - shapely
+  - name: transform_dataset
+    kind: job
+    image: mlrun/mlrun
+    handler: taxi.transform_dataset
+    requirements:
+    - lightgbm
+    - shapely
+  - name: train_model
+    kind: job
+    image: mlrun/mlrun
+    handler: taxi.train_model
+    requirements:
+    - lightgbm
+    - shapely
+  - url: serving.yaml
+    name: model-serving
+  workflows: []
+  artifacts: []
+  source: git://github.com/GiladShapira94/load_project.git#master
+  load_source_on_run: true
+  desired_state: online
