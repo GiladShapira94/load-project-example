@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 from os import path
 import numpy as np 
 import pandas as pd
@@ -14,10 +8,6 @@ from mlrun.execution import MLClientCtx
 from mlrun.datastore import DataItem
 from pickle import dumps
 import shapely.wkt
-
-
-# In[ ]:
-
 
 def get_zones_dict(zones_url):
     zones_df = pd.read_csv(zones_url)
@@ -37,21 +27,15 @@ def get_zones_dict(zones_url):
     return zones_dict
 
 
-# In[ ]:
-
-
 def get_zone_lat(zones_dict, zone_id):
     return zones_dict[zone_id]['lat']
 
-
-# In[ ]:
 
 
 def get_zone_long(zones_dict, zone_id):
     return zones_dict[zone_id]['long']
 
 
-# In[ ]:
 
 
 def clean_df(df):
@@ -60,7 +44,7 @@ def clean_df(df):
              (df.DOLocationID > 0) & (df.DOLocationID <= 263)]
 
 
-# In[ ]:
+
 
 
 # To Compute Haversine distance
@@ -83,7 +67,7 @@ def sphere_dist(pickup_lat, pickup_lon, dropoff_lat, dropoff_lon):
     return 2 * R_earth * np.arcsin(np.sqrt(a))
 
 
-# In[ ]:
+
 
 
 def radian_conv(degree):
@@ -93,7 +77,7 @@ def radian_conv(degree):
     return  np.radians(degree)
 
 
-# In[ ]:
+
 
 
 def add_airport_dist(dataset):
@@ -139,7 +123,7 @@ def add_airport_dist(dataset):
     return dataset
 
 
-# In[ ]:
+
 
 
 def add_datetime_info(dataset):
@@ -155,7 +139,7 @@ def add_datetime_info(dataset):
     return dataset
 
 
-# In[ ]:
+
 
 
 def fetch_data(context : MLClientCtx, taxi_records_csv_path: DataItem, zones_csv_path: DataItem):
@@ -176,7 +160,7 @@ def fetch_data(context : MLClientCtx, taxi_records_csv_path: DataItem, zones_csv
                         index=False, artifact_path=target_path)    
 
 
-# In[ ]:
+
 
 
 def get_zones_dict(zones_df):
@@ -196,21 +180,21 @@ def get_zones_dict(zones_df):
     return zones_dict
 
 
-# In[ ]:
+
 
 
 def get_zone_lat(zones_dict, zone_id):
     return zones_dict[zone_id]['lat']
 
 
-# In[ ]:
+
 
 
 def get_zone_long(zones_dict, zone_id):
     return zones_dict[zone_id]['long']
 
 
-# In[ ]:
+
 
 
 def transform_dataset(context : MLClientCtx, taxi_records_csv_path: DataItem, zones_csv_path: DataItem):
@@ -255,7 +239,7 @@ def transform_dataset(context : MLClientCtx, taxi_records_csv_path: DataItem, zo
     context.logger.info('End dataset transform')
 
 
-# In[ ]:
+
 
 
 params = {
@@ -281,7 +265,7 @@ params = {
     }
 
 
-# In[ ]:
+
 
 
 def train_model(context: MLClientCtx, input_ds: DataItem):
@@ -309,13 +293,13 @@ def train_model(context: MLClientCtx, input_ds: DataItem):
     context.logger.info('End training')
 
 
-# In[ ]:
 
 
 
 
 
-# In[ ]:
+
+
 
 
 
