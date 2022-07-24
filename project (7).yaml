@@ -1,0 +1,23 @@
+kind: project
+metadata:
+  name: from-git
+spec:
+  functions:
+  - name: nuclio
+    kind: nuclio
+    image: mlrun/mlrun
+    handler: multi:multi_3
+    with_repo: true
+  - name: my_job
+    kind: job
+    image: mlrun/mlrun
+    handler: my_job.func
+    with_repo: true
+  - url: serving.yaml
+    name: serving
+    with_repo: true
+  workflows: []
+  artifacts: []
+  source: git://github.com/GiladShapira94/load-project-example.git
+  load_source_on_run: true
+  desired_state: online
