@@ -1,4 +1,4 @@
 def multi_3(context,event):
-    event['int']=event['int']*3
-    print(event)
-    return event
+    event.body['int']=event.body['int']*3
+    print(event.body)
+    return event.body
