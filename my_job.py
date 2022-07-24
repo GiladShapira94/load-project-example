@@ -1,5 +1,5 @@
-def func(num:int):
-  context = mlrun.get_or_create_ctx(name='context')
+from mlrun.execution import MLClientCtx
+def func(context : MLClientCtx,num:int):
   num+=num
   num=num*4
   print(num)
