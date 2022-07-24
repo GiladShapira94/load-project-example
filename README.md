@@ -1,4 +1,3 @@
-# load-project-example
 # Load project YAML from - Git, Zip, Tar source
 
 After you create your project YAML you can simply load that project and run, build and deploy your function.
@@ -44,4 +43,4 @@ nuclio_func=project.deploy_function(function='<function name>')
 nuclio_func.function.invoke('/',{'int':4})
 ````
 
-For more Examples you can see Load_project and load_project_clone
+For more Examples you can see [Load_project](https://github.com/GiladShapira94/load-project-example/blob/master/load_project.ipynb) and [load_project_clone](https://github.com/GiladShapira94/load-project-example/blob/master/load_project_clone.ipynb)
