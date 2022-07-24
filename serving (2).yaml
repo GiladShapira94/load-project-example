@@ -1,0 +1,69 @@
+kind: serving
+metadata:
+  name: serving
+  hash: 7ac32a2ae364fcd2a7785bff91a932b9ae1ffbf4
+  project: from-git
+  categories: []
+spec:
+  command: ''
+  args: []
+  image: mlrun/mlrun
+  build:
+    commands: []
+  description: ''
+  disable_auto_mount: false
+  env: []
+  resources:
+    requests:
+      memory: 1Mi
+      cpu: 25m
+    limits:
+      memory: 20Gi
+      cpu: '2'
+  priority_class_name: igz-workload-medium
+  preemption_mode: prevent
+  min_replicas: 1
+  max_replicas: 4
+  source: ''
+  function_kind: serving_v2
+  graph:
+    steps:
+      start:
+        kind: task
+        handler: serving.start
+      double:
+        kind: task
+        handler: serving.double
+        after:
+        - start
+      add3:
+        kind: task
+        handler: serving.add3
+        after:
+        - double
+      end:
+        kind: task
+        handler: serving.end
+        after:
+        - add3
+        responder: true
+  secret_sources: []
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: app.iguazio.com/lifecycle
+            operator: NotIn
+            values:
+            - preemptible
+          - key: eks.amazonaws.com/capacityType
+            operator: NotIn
+            values:
+            - SPOT
+          - key: node-lifecycle
+            operator: NotIn
+            values:
+            - spot
+  tolerations: null
+verbose: false
