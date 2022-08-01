@@ -1,6 +1,7 @@
 # Load project YAML from - Git, Zip, Tar source
 
 After you create your project YAML you can simply load that project and run, build and deploy your function.
+You can found an addional information of how to create a project YAML for CI/CD [here](https://github.com/GiladShapira94/load-project-example/blob/master/CI-CD%20automation%20creation.md)
 
 In this session you would learn how to:
 * get a function object 
