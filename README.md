@@ -4,11 +4,25 @@ After you create your project YAML you can simply load that project and run, bui
 You can found an addional information of how to create a project YAML for CI/CD [here](https://github.com/GiladShapira94/load-project-example/blob/master/CI-CD%20automation%20creation.md)
 
 In this session you would learn how to:
+* Load or Create a new project for remote URL
 * get a function object 
 * run a function
 * build a function
 * deploy a function
 * run a workflow
+
+#### Load or Create a new project
+For loading a project you can use :
+1. [load_project](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=load_project#mlrun.projects.load_project) thats Load an MLRun project from git or tar or dir 
+````
+# load the project and run the 'main' workflow
+project = load_project("./", "git://github.com/mlrun/project-demo.git",url=<name (in DB) or git or tar.gz or .zip sources archive path>)
+````
+2. [new_project](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=new_project#mlrun.projects.new_project) thats Create a new MLRun project, optionally load it from a yaml/zip/git template.
+````
+# create a project with local and marketplace functions, a workflow, and an artifact
+project = mlrun.new_project("myproj", "./", init_git=True, description="my new project",url=<name (in DB) or git or tar.gz or .zip sources archive path>)
+````
 
 #### Get Function Object 
 For gets function object you will need to use the [get_function](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=get_function#mlrun.projects.MlrunProject.get_function) method.
