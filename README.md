@@ -23,6 +23,7 @@ project = load_project("./", "git://github.com/mlrun/project-demo.git",url=<name
 # create a project with local and marketplace functions, a workflow, and an artifact
 project = mlrun.new_project("myproj", "./", init_git=True, description="my new project",url=<name (in DB) or git or tar.gz or .zip sources archive path>)
 ````
+***Important Note-*** If you want to run your code locally you must clone the files to the context directory, execute automaticlly when you load project or create new project and define a url params
 
 #### Get Function Object 
 For gets function object you will need to use the [get_function](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=get_function#mlrun.projects.MlrunProject.get_function) method.
