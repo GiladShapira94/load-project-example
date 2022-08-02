@@ -1,7 +1,13 @@
 # CI/CD Automation Using - Git, Zip, Tar source 
 
+MLRun provides you three option to create or loading a project:
+
+1. [get_or_create_project](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=get_or_create_project#mlrun.projects.get_or_create_project) - this method allows you to load a project from MLRun DB or optionally load it from a yaml/zip/tar/git template, or create/import if doesnt exist
+2. [new_project](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=new_project#mlrun.projects.new_project) - Create a new MLRun project, optionally load it from a yaml/zip/tar/git template.
+3. [load_project](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=load_project#mlrun.projects.load_project) - Load an MLRun project from yaml/zip/tar/git/dir or from MLRun db
+
 ### Project YAML
-Project YAML allows users to define thier project metadata and use this defention when they [load_project()](https://docs.mlrun.org/en/latest/api/mlrun.projects.html#mlrun.projects.load_project) or create [new_project()](https://docs.mlrun.org/en/latest/api/mlrun.projects.html#mlrun.projects.new_project)
+Project YAML allows users to define thier project metadata for loading a project and deploy and run a functions.
 
 In the Project YAML you can define:
 * Functions 
