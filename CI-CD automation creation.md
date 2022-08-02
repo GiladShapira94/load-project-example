@@ -35,16 +35,9 @@ On this section we will cover how to define each topic from the list above and p
 ### Functions
 For functions definations use the [set_function](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=set_function#mlrun.projects.MlrunProject.set_function) method.
 
-Before you creating fucntion YAML you need to the create a fucntion object you can do it with [code_to_function()](https://docs.mlrun.org/en/latest/api/mlrun.html?highlight=code_to_function#mlrun.code_to_function), [new_function()](https://docs.mlrun.org/en/latest/api/mlrun.run.html?highlight=new_function#mlrun.run.new_function).
-After you creating a function object you can use the [export()](https://docs.mlrun.org/en/latest/api/mlrun.runtimes.html?highlight=export#mlrun.runtimes.BaseRuntime.export) method, For Example:
-````
-<function object>.export('./model_training.yaml')
-````
+The **set_function** method allow you to set the functions attributes in the project YAML, for example: 
+function source (YAML, py, ipynb, function object) , name of the fucntion, function handler, function image and function kind.
 
-The set_function method allow you to set the functions attributes in the project YAML, for example: 
-function source (YAML, py, ipynb, function object) , name of the fucntion, function handler, function image and kind
-
-**Important Note -** Remote functions as Serving and Nuclio need to set with thier function object to function YAML
 ````
 project.set_function(
     name="training", handler="training.model_training",
@@ -55,10 +48,19 @@ project.set_function(
 
 > When using with_repo=True the functions need to be deployed (function.deploy()) to build a container, unless you set project.spec.load_source_on_run=True which instructs MLRun to load the git/archive repo into the function container at run time and do not require a build (this is simpler when developing, for production it’s preferred to build the image with the code)
 
+**Important Note -** Remote functions as Serving need a function YAML as a source or function object
+Before you creating fucntion YAML you need to the create a fucntion object you can do it with [code_to_function()](https://docs.mlrun.org/en/latest/api/mlrun.html?highlight=code_to_function#mlrun.code_to_function), [new_function()](https://docs.mlrun.org/en/latest/api/mlrun.run.html?highlight=new_function#mlrun.run.new_function).
+
+After you creating a function object you can use the [export()](https://docs.mlrun.org/en/latest/api/mlrun.runtimes.html?highlight=export#mlrun.runtimes.BaseRuntime.export) method, For Example:
+````
+<function object>.export('./model_training.yaml')
+````
+
 ````
 project.set_function(
-    func="training.yaml",name='training',with_repo=True)
+    func="training.yaml",name='training',with_repo=True,kind='serving')
 ````
+
 ### Artifacts
 For Artifacts Defenition use [set_artifact()](https://docs.mlrun.org/en/latest/api/mlrun.projects.html?highlight=set_artifact#mlrun.projects.MlrunProject.set_artifact) method.
 
