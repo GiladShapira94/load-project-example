@@ -1,8 +1,8 @@
 kind: serving
 metadata:
   name: serving
-  hash: 7ac32a2ae364fcd2a7785bff91a932b9ae1ffbf4
-  project: from-git
+  hash: 61256b515ace21054679533c6c82804c72148559
+  project: new-git-proj
   categories: []
 spec:
   command: ''
@@ -20,6 +20,8 @@ spec:
     limits:
       memory: 20Gi
       cpu: '2'
+  node_selector:
+    app.iguazio.com/lifecycle: non-preemptible
   priority_class_name: igz-workload-medium
   preemption_mode: prevent
   min_replicas: 1

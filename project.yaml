@@ -1,6 +1,6 @@
 kind: project
 metadata:
-  name: from-git
+  name: new-git-proj
 spec:
   functions:
   - name: nuclio
@@ -13,11 +13,19 @@ spec:
     image: mlrun/mlrun
     handler: my_job.func
     with_repo: true
+  - name: my_job_with_requirements
+    kind: job
+    image: mlrun/mlrun
+    handler: my_job_with_requirements.py.log2
+    with_repo: true
+    requirements:
+    - pandas
   - url: serving.yaml
     name: serving
     with_repo: true
   workflows: []
   artifacts: []
   source: git://github.com/GiladShapira94/load-project-example.git
+  origin_url: git://github.com/GiladShapira94/load-project-example.git#refs/heads/master
   load_source_on_run: true
   desired_state: online
