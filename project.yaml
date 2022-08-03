@@ -16,7 +16,7 @@ spec:
   - name: my_job_with_requirements
     kind: job
     image: mlrun/mlrun
-    handler: my_job_with_requirements.py.log2
+    handler: my_job_with_requirements.py.log_df
     with_repo: true
     requirements:
     - pandas
